@@ -5,10 +5,10 @@ declare module 'tailwindcss/tailwind-config' {
 			extend: {
 				colors: {
 					primary: Record<string, string>;
+					neutral: Record<string, string>;
 				};
 				fontFamily: {
 					manrope: string[];
-					poppins: string[];
 				};
 			};
 		};
