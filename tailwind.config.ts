@@ -32,7 +32,7 @@ export default {
 				manrope: ['Manrope', 'serif'],
 			},
 			fontSize: {
-				h1: ['96px', { lineHeight: '120px' }],
+				h1: ['96', { lineHeight: '120px' }],
 				h2: ['64px', { lineHeight: '80px' }],
 				h3: ['48px', { lineHeight: '60px' }],
 				h4: ['40px', { lineHeight: '48px' }],
