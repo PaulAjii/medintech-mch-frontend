@@ -1,7 +1,6 @@
 <template>
-	<HospitalOnboarding />
+	<!-- <HospitalOnboarding /> -->
+	<router-view></router-view>
 </template>
 
-<script lang="ts" setup>
-	import HospitalOnboarding from './views/Hospital/HospitalOnboarding.vue';
-</script>
+<script lang="ts" setup></script>

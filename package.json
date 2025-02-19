@@ -10,6 +10,7 @@
 		"type-check": "vue-tsc --noEmit"
 	},
 	"dependencies": {
+		"@formkit/addons": "^1.6.9",
 		"@formkit/vue": "^1.6.9",
 		"@types/node": "^22.13.1",
 		"pinia": "^2.3.1",
