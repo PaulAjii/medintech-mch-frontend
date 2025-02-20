@@ -2,7 +2,7 @@
 	<div class="w-full pb-4">
 		<div class="w-full flex justify-between gap-4">
 			<div
-				v-for="(step, index) in steps"
+				v-for="(_, index) in steps"
 				:key="index"
 				class="w-full"
 			>
