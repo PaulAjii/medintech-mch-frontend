@@ -35,6 +35,10 @@ const routes: RouteRecordRaw[] = [
 			title: 'Healthcare Workers Registration',
 		},
 	},
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/',
+	},
 ];
 const router = createRouter({
 	history: createWebHistory(),
