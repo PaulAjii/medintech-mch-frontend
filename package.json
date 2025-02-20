@@ -1,11 +1,12 @@
 {
-	"name": "medintech-mch-frontend",
+	"name": "birth-bridge",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"description": "This is a vue and typescript app built for the MedInnovate Hackathon in the Maternal and Child Health Track. It features an Electronic Medical Record which also doubles as a Referral system for Pregnant women.",
 	"scripts": {
 		"dev": "vite",
-		"build": "vue-tsc && vite build",
+		"build": "vite build",
 		"preview": "vite preview",
 		"type-check": "vue-tsc --noEmit"
 	},
