@@ -1,5 +1,9 @@
 <template>
-	<OnboardingBg>
+	<OnboardingBg
+		bgGradientPosition="bg-gradient-to-b"
+		bgGradientFrom="from-primary-300"
+		bgGradientTo="to-neutral"
+	>
 		<div
 			class="bg-neutral w-[700px] h-[700px] absolute p-8"
 			v-if="!locationCompleted"
@@ -89,15 +93,26 @@
 				:steps="steps"
 				:currentStep="currentStep"
 			/>
-			<component
-				:is="currentStepComponent"
-				:model-value="
-					formData[currentStep === 0 ? 'hospitalData' : 'security']
-				"
-				@update:model-value="handleStepUpdate"
-				@next="handleNext"
-				@complete="handleComplete"
-			/>
+
+			<template v-if="currentStep === 0">
+				<HospitalData
+					:model-value="formData.hospitalData"
+					@update:model-value="
+						(value) => handleStepUpdate('hospitalData', value)
+					"
+					@next="handleNext"
+				/>
+			</template>
+
+			<template v-else>
+				<SecurityData
+					:model-value="formData.security"
+					@update:model-value="
+						(value) => handleStepUpdate('security', value)
+					"
+					@next="handleNext"
+				/>
+			</template>
 		</div>
 	</OnboardingBg>
 </template>
@@ -106,12 +121,7 @@
 	import OnboardingBg from './components/OnboardingBg.vue';
 	import FormHead from './components/FormHead.vue';
 	import statesData from '../../assets/json-data/nigerian-states.json';
-	import type {
-		HospitalFormData,
-		LocationData,
-		NigerianStates,
-		SecurityFormData,
-	} from '../../types/hospital';
+	import type { LocationData, NigerianStates } from '../../types/hospital';
 	import FormError from '../../components/FormError.vue';
 	import HospitalData from './form-steps/HospitalData.vue';
 	import SecurityData from './form-steps/SecurityData.vue';
@@ -169,31 +179,21 @@
 
 	const steps = ['Hospital Data', 'Security Data'];
 
-	const currentStepComponent = computed(() => {
-		const components = {
-			0: HospitalData,
-			1: SecurityData,
-		}[currentStep.value];
-
-		return components || HospitalData;
-	});
-
 	type StepKeys = 'hospitalData' | 'security';
 
-	const updateStepData = <T extends StepKeys>(
+	const handleStepUpdate = <T extends StepKeys>(
 		step: T,
 		value: (typeof formData.value)[T]
 	) => {
 		formData.value[step] = value;
 	};
 
-	const handleStepUpdate = (value: HospitalFormData | SecurityFormData) => {
-		const step = currentStep.value === 0 ? 'hospitalData' : 'security';
-		updateStepData(step, value);
-	};
-
 	const handleNext = () => {
-		if (currentStep.value < steps.length - 1) currentStep.value++;
+		if (currentStep.value < steps.length - 1) {
+			currentStep.value++;
+		} else {
+			handleComplete();
+		}
 	};
 
 	const stateOptions = computed(() => {

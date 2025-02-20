@@ -26,6 +26,15 @@ const routes: RouteRecordRaw[] = [
 			title: 'Hospital DashBoard',
 		},
 	},
+
+	{
+		path: '/hcw-registration',
+		name: 'hcwRegistration',
+		component: () => import('../views/Hospital/HCWAuth.vue'),
+		meta: {
+			title: 'Healthcare Workers Registration',
+		},
+	},
 ];
 const router = createRouter({
 	history: createWebHistory(),

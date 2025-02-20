@@ -62,7 +62,7 @@
 				hidden: !isFormValid,
 			}"
 			type="button"
-			@click="handleComplete"
+			@click="handleNext"
 		>
 			Continue
 		</button>
@@ -72,11 +72,11 @@
 <script setup lang="ts">
 	import { ref, computed, watch } from 'vue';
 	import FormHead from '../components/FormHead.vue';
-	import { SecurityFormData } from '../../../types/hospital';
 	import FormError from '../../../components/FormError.vue';
+	import { HCWSecurityData } from '../../../types/healthcareworkers';
 
 	const props = defineProps<{
-		modelValue: SecurityFormData;
+		modelValue: HCWSecurityData;
 	}>();
 
 	const touchedFields = ref({
@@ -118,11 +118,12 @@
 	};
 
 	const emit = defineEmits<{
-		(e: 'update:modelValue', value: SecurityFormData): void;
+		(e: 'update:modelValue', value: HCWSecurityData): void;
 		(e: 'next'): void;
 	}>();
 
-	const securityData = ref<SecurityFormData>(props.modelValue);
+	const securityData = ref<HCWSecurityData>(props.modelValue);
+
 	watch(
 		securityData,
 		(newValue) => {
@@ -141,7 +142,7 @@
 		);
 	});
 
-	const handleComplete = () => {
+	const handleNext = () => {
 		touchedFields.value.password = true;
 		touchedFields.value.confirm_password = true;
 

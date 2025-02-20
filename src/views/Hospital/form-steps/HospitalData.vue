@@ -241,7 +241,6 @@
 		Object.keys(touchedFields.value).forEach((field) => {
 			touchedFields.value[field as keyof HospitalFormData] = true;
 		});
-		emit('next');
 
 		if (isFormValid.value) emit('next');
 	};
