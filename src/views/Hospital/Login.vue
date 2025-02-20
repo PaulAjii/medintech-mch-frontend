@@ -1,5 +1,9 @@
 <template>
-	<OnboardingBg>
+	<OnboardingBg
+		bgGradientPosition="bg-gradient-to-b"
+		bgGradientFrom="from-primary-300"
+		bgGradientTo="to-neutral"
+	>
 		<div class="bg-neutral w-[700px] h-[700px] absolute p-8">
 			<form class="w-full h-full flex flex-col justify-between">
 				<div class="w-full h-full font-manrope">
